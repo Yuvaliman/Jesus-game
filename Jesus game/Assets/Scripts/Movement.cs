@@ -57,14 +57,17 @@ public class Movement : MonoBehaviour
 
     void UpdatePlayerRotation()
     {
-        if (horizontal > 0)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // Check if the mouse is on the right or left side of the screen
+        if (mousePosition.x > transform.position.x)
         {
-            // Moving right, flip the player to face right
+            // Mouse is on the right, face right
             spriteRenderer.flipX = false;
         }
-        else if (horizontal < 0)
+        else
         {
-            // Moving left, flip the player to face left
+            // Mouse is on the left, face left
             spriteRenderer.flipX = true;
         }
     }
