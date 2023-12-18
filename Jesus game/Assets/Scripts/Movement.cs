@@ -79,7 +79,28 @@ public class Movement : MonoBehaviour
 
     void UpdateAnimation()
     {
-        anim.SetBool("IsWalking", (horizontal != 0 || vertical != 0)); //if no move no walking.
+        bool isMoving = horizontal != 0 || vertical != 0;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+
+        anim.SetBool("IsWalking", isMoving);
+
+        if (isMoving)
+        {
+            if (isRunning)
+            {
+                anim.SetBool("IsRunning", true);
+                MoveSpeed = 7f; // Set running speed
+            }
+            else
+            {
+                anim.SetBool("IsRunning", false);
+                MoveSpeed = 5f; // Set walking speed
+            }
+        }
+        else
+        {
+            anim.SetBool("IsRunning", false);
+        }
     }
 
     void FaceMouse()
