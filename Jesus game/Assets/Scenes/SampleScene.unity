@@ -1432,6 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 100
   _maximumHealth: 100
+  anim: {fileID: 1675255380}
   OnDied:
     m_PersistentCalls:
       m_Calls:

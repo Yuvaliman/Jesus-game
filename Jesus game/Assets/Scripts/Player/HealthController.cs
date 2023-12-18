@@ -11,6 +11,8 @@ public class HealthController : MonoBehaviour
     [SerializeField]
     private float _maximumHealth;
 
+    public Animator anim;
+
     public float RemainingHealthPercentage
     {
         get
@@ -31,6 +33,7 @@ public class HealthController : MonoBehaviour
     {
         if (_currentHealth == 0)
         {
+            anim.SetBool("IsDead", true);
             return;
         }
 
