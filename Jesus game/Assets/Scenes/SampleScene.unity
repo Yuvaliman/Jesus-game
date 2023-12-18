@@ -739,10 +739,8 @@ MonoBehaviour:
   anim: {fileID: 1675255380}
   spriteRenderer: {fileID: 1675255378}
   MoveSpeed: 5
-  dashSpeed: 200
-  lastMoveDirectionX: 0
-  lastMoveDirectionY: 0
-  dashCooldown: 0
+  dashCooldown: 1
+  dashDistance: 10
 --- !u!96 &1675255382
 TrailRenderer:
   serializedVersion: 3

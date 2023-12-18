@@ -13,11 +13,10 @@ public class Movement : MonoBehaviour
     public float MoveSpeed = 5f;
 
     // Dash variables
-    public float dashSpeed = 200f;
+    public float dashCooldown = 1f;
     private float nextDashTime = 0f;
-    public float lastMoveDirectionX = 0f;
-    public float lastMoveDirectionY = 0f;
-    public float dashCooldown = 0f;
+    public float dashDistance = 10f;
+
 
     void Start()
     {
@@ -37,84 +36,65 @@ public class Movement : MonoBehaviour
         // Update player movement
         body.velocity = new Vector2(horizontal * MoveSpeed, vertical * MoveSpeed);
 
-        // Update player rotation
-        UpdatePlayerRotation();
-
-        UpdateLastMoveDirection(horizontal, vertical);
+        // Face mouse
+        FaceMouse();
 
         // Dash
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Check the last movement direction
-            if (lastMoveDirectionX != 0f || lastMoveDirectionY != 0f)
-            {
-                // Move the player in the same way they went before with dash speed boost
-                StartCoroutine(DashCoroutine());
-            }
+            StartCoroutine(DashCoroutine());
         }
     }
 
     IEnumerator DashCoroutine()
     {
-        // Check if enough time has passed since the last dash
         if (Time.time >= nextDashTime)
         {
-            // Boost the player's speed
-            body.velocity = new Vector2(lastMoveDirectionX * dashSpeed, lastMoveDirectionY * dashSpeed);
+            Vector3 mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            // Set the next dash time based on the cooldown
+            // Calculate the destination point based on a fixed distance from the player
+            Vector2 dashDestination = (mousePos - transform.position).normalized * dashDistance;
+
+            // Save the initial position for reference
+            Vector2 initialPosition = transform.position;
+
             nextDashTime = Time.time + dashCooldown;
 
-            // Wait for a moment, then call StopDashing function
-            yield return new WaitForSeconds(0.1f);
+            // Dash duration based on distance (adjust as necessary)
+            float dashDuration = 0.2f;
+            float startTime = Time.time;
 
-            // Function to stop dashing
-            body.velocity = Vector2.zero;
+            while (Time.time < startTime + dashDuration)
+            {
+                // Move the player towards the dash destination
+                float journeyFraction = (Time.time - startTime) / dashDuration;
+                transform.position = Vector2.Lerp(initialPosition, initialPosition + dashDestination, journeyFraction);
+                yield return null;
+            }
+
+            transform.position = initialPosition + dashDestination; // Ensure the player reaches the destination exactly
         }
-    }
-
-    void UpdateLastMoveDirection(float h, float v)
-    {
-        lastMoveDirectionX = Mathf.Clamp(h, -1f, 1f);
-        lastMoveDirectionY = Mathf.Clamp(v, -1f, 1f);
     }
 
     void UpdateAnimation()
     {
-        if (horizontal != 0 || vertical != 0)
-        {
-            anim.SetBool("IsWalking", true);
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                anim.SetBool("IsRunning", true);
-                MoveSpeed = 7f;
-            }
-            else
-            {
-                anim.SetBool("IsRunning", false);
-                MoveSpeed = 5f;
-            }
-        }
-        else
-        {
-            anim.SetBool("IsWalking", false);
-        }
+        anim.SetBool("IsWalking", (horizontal != 0 || vertical != 0)); //if no move no walking.
     }
 
-    void UpdatePlayerRotation()
+    void FaceMouse()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        // Check if the mouse is on the right or left side of the screen
-        if (mousePosition.x > transform.position.x)
+        // Flip the sprite based on mouse position
+        if (mousePos.x > transform.position.x)
         {
-            // Mouse is on the right, face right
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = false; // Face right
         }
         else
         {
-            // Mouse is on the left, face left
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = true; // Face left
         }
     }
 }
