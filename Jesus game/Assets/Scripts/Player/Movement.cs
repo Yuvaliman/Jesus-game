@@ -17,7 +17,6 @@ public class Movement : MonoBehaviour
     private float nextDashTime = 0f;
     public float dashDistance = 10f;
 
-
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -79,7 +78,28 @@ public class Movement : MonoBehaviour
 
     void UpdateAnimation()
     {
-        anim.SetBool("IsWalking", (horizontal != 0 || vertical != 0)); //if no move no walking.
+        bool isMoving = horizontal != 0 || vertical != 0;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+
+        anim.SetBool("IsWalking", isMoving);
+
+        if (isMoving)
+        {
+            if (isRunning)
+            {
+                anim.SetBool("IsRunning", true);
+                MoveSpeed = 7f;
+            }
+            else
+            {
+                anim.SetBool("IsRunning", false);
+                MoveSpeed = 5f;
+            }
+        }
+        else
+        {
+            anim.SetBool("IsRunning", false);
+        }
     }
 
     void FaceMouse()
@@ -87,7 +107,7 @@ public class Movement : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        // Flip the sprite based on mouse position
+        // Flip the player based on mouse position
         if (mousePos.x > transform.position.x)
         {
             spriteRenderer.flipX = false; // Face right
