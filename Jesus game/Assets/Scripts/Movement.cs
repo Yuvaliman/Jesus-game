@@ -4,7 +4,7 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D body;
     public Animator anim;
-    public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    public SpriteRenderer spriteRenderer;
 
     private float horizontal;
     private float vertical;
@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // Assign the SpriteRenderer component
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
