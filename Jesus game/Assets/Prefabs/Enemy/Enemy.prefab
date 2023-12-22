@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1abe1d5639301446841f53e7c57314d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 2100000, guid: 42a8aadaa3248314f9527aaacf27e40f, type: 2}
+  alertedMaterial: {fileID: 2100000, guid: 8b20c4afe69a40442bb90204774fc73d, type: 2}
   _playerAwarenessDistance: 5
 --- !u!114 &644980121909803712
 MonoBehaviour:
