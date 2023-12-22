@@ -8,7 +8,6 @@ public class SettingsMenu : MonoBehaviour
 {
 
     public AudioMixer audioMixer;
-
     public Dropdown resolutionDropdown;
 
     Resolution[] resolutions;
@@ -28,7 +27,7 @@ public class SettingsMenu : MonoBehaviour
             string option = resolutions[i].width + " X " + resolutions[i].height;
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width && 
+            if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
