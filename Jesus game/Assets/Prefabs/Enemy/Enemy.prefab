@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6917356761578971820}
   - component: {fileID: 8586860126059083428}
   - component: {fileID: 4176714523715036394}
+  - component: {fileID: 644980121909803712}
   - component: {fileID: 3347188144737719377}
   - component: {fileID: 2482241324438646337}
   m_Layer: 0
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAwarenessDistance: 5
+--- !u!114 &644980121909803712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469540435845157835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a2de30d13e3c341acc9669fd6f6633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageAmount: 10
 --- !u!212 &3347188144737719377
 SpriteRenderer:
   m_ObjectHideFlags: 0
