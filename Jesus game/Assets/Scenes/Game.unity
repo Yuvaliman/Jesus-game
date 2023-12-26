@@ -4910,7 +4910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staminaBarForegroundImage: {fileID: 979173748}
-  fillSpeed: 0.2
+  fillSpeed: 150
 --- !u!1 &1418581529
 GameObject:
   m_ObjectHideFlags: 0

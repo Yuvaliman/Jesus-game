@@ -19,9 +19,9 @@ public class Movement : MonoBehaviour
     public float dashDistance = 10f;
 
     public Image staminaBarForegroundImage;
-    private float staminaDecreaseRate = 50.0f;
+    private float staminaRunningDecreaseRate = 50.0f;
+    private float staminaDashDecreaseRate = 0.25f;
     private float maxStamina = 100.0f;
-    private bool isRunning = false;
 
     void Start()
     {
@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
         FaceMouse();
 
         // Dash
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && staminaBarForegroundImage.fillAmount > 0.01f)
         {
             StartCoroutine(DashCoroutine());
         }
@@ -53,33 +53,35 @@ public class Movement : MonoBehaviour
 
     IEnumerator DashCoroutine()
     {
-        if (Time.time >= nextDashTime)
-        {
-            Vector3 mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-            // Calculate the destination point based on a fixed distance from the player
-            Vector2 dashDestination = (mousePos - transform.position).normalized * dashDistance;
-
-            // Save the initial position for reference
-            Vector2 initialPosition = transform.position;
-
-            nextDashTime = Time.time + dashCooldown;
-
-            // Dash duration based on distance (adjust as necessary)
-            float dashDuration = 0.2f;
-            float startTime = Time.time;
-
-            while (Time.time < startTime + dashDuration)
+            if (Time.time >= nextDashTime && staminaBarForegroundImage.fillAmount > 0.25f)
             {
-                // Move the player towards the dash destination
-                float journeyFraction = (Time.time - startTime) / dashDuration;
-                transform.position = Vector2.Lerp(initialPosition, initialPosition + dashDestination, journeyFraction);
-                yield return null;
-            }
+                Vector3 mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            transform.position = initialPosition + dashDestination; // Ensure the player reaches the destination exactly
-        }
+                // Calculate the destination point based on a fixed distance from the player
+                Vector2 dashDestination = (mousePos - transform.position).normalized * dashDistance;
+
+                // Save the initial position for reference
+                Vector2 initialPosition = transform.position;
+
+                nextDashTime = Time.time + dashCooldown;
+
+                // Dash duration based on distance (adjust as necessary)
+                float dashDuration = 0.2f;
+                float startTime = Time.time;
+
+                while (Time.time < startTime + dashDuration)
+                {
+                    // Move the player towards the dash destination
+                    float journeyFraction = (Time.time - startTime) / dashDuration;
+                    transform.position = Vector2.Lerp(initialPosition, initialPosition + dashDestination, journeyFraction);
+                    yield return null;
+                }
+
+                transform.position = initialPosition + dashDestination; // Ensure the player reaches the destination exactly
+
+                staminaBarForegroundImage.fillAmount -= staminaDashDecreaseRate;
+            }
     }
 
     void UpdateAnimation()
@@ -96,7 +98,7 @@ public class Movement : MonoBehaviour
                 anim.SetBool("IsRunning", true);
                 MoveSpeed = 7f;
 
-                staminaBarForegroundImage.fillAmount -= staminaDecreaseRate * Time.deltaTime / maxStamina;
+                staminaBarForegroundImage.fillAmount -= staminaRunningDecreaseRate * Time.deltaTime / maxStamina;
             }
             else
             {
@@ -124,17 +126,5 @@ public class Movement : MonoBehaviour
         {
             spriteRenderer.flipX = true; // Face left
         }
-    }
-
-    // Call this method when you start running
-    public void StartRunning()
-    {
-        isRunning = true;
-    }
-
-    // Call this method when you stop running
-    public void StopRunning()
-    {
-        isRunning = false;
     }
 }
