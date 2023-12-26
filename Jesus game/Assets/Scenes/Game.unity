@@ -4906,10 +4906,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1382756869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 607160ce46359a44793523ed83a381ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f23e72631ac1f1e4691b926cba3e4f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarForegroundImage: {fileID: 979173748}
+  _staminaBarForegroundImage: {fileID: 979173748}
+  fillSpeed: 0.2
 --- !u!1 &1418581529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5622,6 +5623,7 @@ MonoBehaviour:
   MoveSpeed: 5
   dashCooldown: 1
   dashDistance: 10
+  staminaBarForegroundImage: {fileID: 979173748}
 --- !u!96 &1675255382
 TrailRenderer:
   serializedVersion: 3

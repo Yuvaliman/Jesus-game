@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class Movement : MonoBehaviour
     public float dashCooldown = 1f;
     private float nextDashTime = 0f;
     public float dashDistance = 10f;
+
+    public Image staminaBarForegroundImage;
+    private float staminaDecreaseRate = 50.0f;
+    private float maxStamina = 100.0f;
+    private bool isRunning = false;
 
     void Start()
     {
@@ -85,10 +91,12 @@ public class Movement : MonoBehaviour
 
         if (isMoving)
         {
-            if (isRunning)
+            if (isRunning && staminaBarForegroundImage.fillAmount > 0.01f)
             {
                 anim.SetBool("IsRunning", true);
                 MoveSpeed = 7f;
+
+                staminaBarForegroundImage.fillAmount -= staminaDecreaseRate * Time.deltaTime / maxStamina;
             }
             else
             {
@@ -116,5 +124,17 @@ public class Movement : MonoBehaviour
         {
             spriteRenderer.flipX = true; // Face left
         }
+    }
+
+    // Call this method when you start running
+    public void StartRunning()
+    {
+        isRunning = true;
+    }
+
+    // Call this method when you stop running
+    public void StopRunning()
+    {
+        isRunning = false;
     }
 }
