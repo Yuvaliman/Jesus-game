@@ -7,9 +7,6 @@ public class StaminaBarUI : MonoBehaviour
     [SerializeField]
     private Image _staminaBarForegroundImage;
 
-    [SerializeField]
-    private float fillSpeed = 100f;
-
     private void Start()
     {
         StartCoroutine(FillStaminaBarOverTime());
@@ -17,8 +14,6 @@ public class StaminaBarUI : MonoBehaviour
 
     private IEnumerator FillStaminaBarOverTime()
     {
-        float maxStamina = 10.0f;
-
         while (true)
         {
             if (_staminaBarForegroundImage.fillAmount < 1.0f)
@@ -27,7 +22,7 @@ public class StaminaBarUI : MonoBehaviour
             }
 
             // Regenerate gradually
-            _staminaBarForegroundImage.fillAmount += fillSpeed * Time.deltaTime / maxStamina;
+            _staminaBarForegroundImage.fillAmount += 10f * Time.deltaTime;
 
             yield return null;
         }
