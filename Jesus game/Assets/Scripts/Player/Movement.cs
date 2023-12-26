@@ -19,9 +19,8 @@ public class Movement : MonoBehaviour
     public float dashDistance = 10f;
 
     public Image staminaBarForegroundImage;
-    private float staminaRunningDecreaseRate = 50.0f;
+    private float staminaRunningDecreaseRate = 25.0f;
     private float staminaDashDecreaseRate = 0.25f;
-    private float maxStamina = 100.0f;
 
     void Start()
     {
@@ -98,7 +97,7 @@ public class Movement : MonoBehaviour
                 anim.SetBool("IsRunning", true);
                 MoveSpeed = 7f;
 
-                staminaBarForegroundImage.fillAmount -= staminaRunningDecreaseRate * Time.deltaTime / maxStamina;
+                staminaBarForegroundImage.fillAmount -= staminaRunningDecreaseRate * Time.deltaTime;
             }
             else
             {
