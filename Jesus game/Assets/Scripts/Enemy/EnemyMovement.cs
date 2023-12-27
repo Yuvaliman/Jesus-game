@@ -53,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_playerAwarenessController.AwareOfPlayer)
         {
-            _targetDirection = _playerAwarenessController.DirectionToPlayer;
+            _targetDirection = _playerAwarenessController.DirectionToPlayer.normalized;
         }
     }
 
