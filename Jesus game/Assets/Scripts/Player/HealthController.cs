@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class HealthController : MonoBehaviour
 {
+    public Crossfade Crossfade;
+
     [SerializeField]
     private float _currentHealth;
 
@@ -87,7 +90,7 @@ public class HealthController : MonoBehaviour
 
         yield return new WaitForSeconds(deathDelay);
 
-        SceneManager.LoadScene(2);
+        Crossfade.CrossfadeAnimation(2);
 
         isDeadAnimationStarted = false;
     }
