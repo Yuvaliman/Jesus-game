@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class HealthController : MonoBehaviour
 {
+    public Rigidbody2D body;
+
     public Crossfade Crossfade;
 
     [SerializeField]
@@ -55,6 +57,7 @@ public class HealthController : MonoBehaviour
         if (_currentHealth == 0)
         {
             OnDied.Invoke();
+            body.velocity = new Vector2(0, 0);
             StartCoroutine(DeathRoutine());
         }
         else
