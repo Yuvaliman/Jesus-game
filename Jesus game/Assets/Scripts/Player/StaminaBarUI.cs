@@ -34,12 +34,10 @@ public class StaminaBarUI : MonoBehaviour
                     _staminaBarForegroundImage.fillAmount = 0.011f;
                 }
 
-                Debug.Log("Stamina Updated: " + _staminaBarForegroundImage.fillAmount);
 
                 yield return null;
             }
 
-            Debug.Log("Stamina Full");
 
             // Reset stamina bar for the next iteration
             ResetStaminaBar();

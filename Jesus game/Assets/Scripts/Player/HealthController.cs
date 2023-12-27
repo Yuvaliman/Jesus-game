@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class HealthController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class HealthController : MonoBehaviour
     private float _maximumHealth;
 
     public Animator anim;
+
+    bool isDeadAnimationStarted = false;
+    float deathDelay = 1.0f;
 
     public float RemainingHealthPercentage
     {
@@ -31,12 +35,6 @@ public class HealthController : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        if (_currentHealth == 0)
-        {
-            anim.SetBool("IsDead", true);
-            return;
-        }
-
         if (IsInvincible)
         {
             return;
@@ -54,6 +52,7 @@ public class HealthController : MonoBehaviour
         if (_currentHealth == 0)
         {
             OnDied.Invoke();
+            StartCoroutine(DeathRoutine());
         }
         else
         {
@@ -76,5 +75,20 @@ public class HealthController : MonoBehaviour
         {
             _currentHealth = _maximumHealth;
         }
+    }
+
+    IEnumerator DeathRoutine()
+    {
+        if (!isDeadAnimationStarted)
+        {
+            anim.SetBool("IsDead", true);
+            isDeadAnimationStarted = true;
+        }
+
+        yield return new WaitForSeconds(deathDelay);
+
+        SceneManager.LoadScene(2);
+
+        isDeadAnimationStarted = false;
     }
 }
