@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     public float dashDistance = 10f;
 
     public Image staminaBarForegroundImage;
-    private float staminaRunningDecreaseRate = 25.0f;
+    private float staminaRunningDecreaseRate = .15f;
     private float staminaDashDecreaseRate = 0.25f;
 
     void Start()

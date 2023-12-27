@@ -7,24 +7,48 @@ public class StaminaBarUI : MonoBehaviour
     [SerializeField]
     private Image _staminaBarForegroundImage;
 
+    private float targetFillAmount = 1.0f;
+    private float fillSpeed = 0.1f;
+
     private void Start()
     {
-        StartCoroutine(FillStaminaBarOverTime());
+        StartCoroutine(FillStaminaBar());
     }
 
-    private IEnumerator FillStaminaBarOverTime()
+    private IEnumerator FillStaminaBar()
     {
         while (true)
         {
-            if (_staminaBarForegroundImage.fillAmount < 1.0f)
+            yield return new WaitForSeconds(1.0f); // Wait for 1 second
+
+            while (_staminaBarForegroundImage.fillAmount < 0.99f)
             {
-                yield return new WaitForSeconds(1);
+                // Regenerate stamina
+                _staminaBarForegroundImage.fillAmount = Mathf.MoveTowards(_staminaBarForegroundImage.fillAmount, targetFillAmount, fillSpeed * Time.deltaTime);
+
+                // Ensure the stamina bar doesn't go below 0
+                if (_staminaBarForegroundImage.fillAmount < 0.01f)
+                {
+                    _staminaBarForegroundImage.fillAmount = 0f;
+                    yield return new WaitForSeconds(1.0f);
+                    _staminaBarForegroundImage.fillAmount = 0.011f;
+                }
+
+                Debug.Log("Stamina Updated: " + _staminaBarForegroundImage.fillAmount);
+
+                yield return null;
             }
 
-            // Regenerate gradually
-            _staminaBarForegroundImage.fillAmount += 10f * Time.deltaTime;
+            Debug.Log("Stamina Full");
 
-            yield return null;
+            // Reset stamina bar for the next iteration
+            ResetStaminaBar();
         }
+    }
+
+    private void ResetStaminaBar()
+    {
+        // Reset stamina bar to initial state
+        _staminaBarForegroundImage.fillAmount = 1.0f;
     }
 }
