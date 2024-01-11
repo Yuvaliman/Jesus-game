@@ -5441,7 +5441,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1675255378
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6326,7 +6326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be2dd957784bab45a8fc878aafa5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelLoader: {fileID: 0}
 --- !u!114 &1778732919
 MonoBehaviour:
   m_ObjectHideFlags: 0
