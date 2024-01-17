@@ -712,6 +712,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199a7172008949f4baddb63fff34bbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 1669519321}
+  transitionTime: 1
+  image: {fileID: 1669519320}
   pauseMenuUI: {fileID: 1534607887}
   settingsMenuUI: {fileID: 1778732916}
 --- !u!114 &90321606
@@ -5095,10 +5098,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1669519319}
-        m_TargetAssemblyTypeName: Crossfade, Assembly-CSharp
-        m_MethodName: CrossfadeAnimation
-        m_Mode: 3
+      - m_Target: {fileID: 90321605}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5389,6 +5392,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f94c913464f86479b7685f0b929c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1669519320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8660554133740531090, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
+  m_PrefabInstance: {fileID: 1669519318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1669519321 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3928094546734197831, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
+  m_PrefabInstance: {fileID: 1669519318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1675255376
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+
+    public Animator transition;
+    public float transitionTime = 1f;
+    public GameObject image;
+
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
@@ -39,7 +46,15 @@ public class PauseMenu : MonoBehaviour
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+        StartCoroutine(LoadScene(0));
+    }
+
+    IEnumerator LoadScene(int scene)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(scene);
     }
     public void Quit()
     {
