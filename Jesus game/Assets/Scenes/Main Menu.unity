@@ -2741,8 +2741,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1038124771}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SefFullScreen
-        m_Mode: 0
+        m_MethodName: SetFullScreen
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3788,7 +3788,6 @@ MonoBehaviour:
   VolumeInput: {fileID: 161426121}
   GraphicsInput: {fileID: 188639094}
   FullScreenInput: {fileID: 894721262}
-  ResolutionInput: {fileID: 1836347963}
 --- !u!1 &1050887137
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,8 +5689,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1038124771}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: setResolution
-        m_Mode: 0
+        m_MethodName: SetResolution
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
