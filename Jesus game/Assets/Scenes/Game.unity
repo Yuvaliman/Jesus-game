@@ -649,7 +649,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -729,12 +729,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb719e9593e8ef4e893fe972b6e395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 10a85d48f775f1e429a56e36b203d535, type: 2}
   resolutionDropdown: {fileID: 327674423}
+  FullScreenInput: {fileID: 1203846591}
+  mainCamera: {fileID: 519420031}
+  audioMixer: {fileID: 24100000, guid: 10a85d48f775f1e429a56e36b203d535, type: 2}
   VolumeInput: {fileID: 1762596260}
   GraphicsInput: {fileID: 962264896}
-  FullScreenInput: {fileID: 1203846591}
-  ResolutionInput: {fileID: 327674423}
 --- !u!1 &140334758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5299,10 @@ PrefabInstance:
     - target: {fileID: 5500408519642507839, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
       propertyPath: m_Name
       value: Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500408519642507839, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8934673843879990424, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
       propertyPath: m_Pivot.x

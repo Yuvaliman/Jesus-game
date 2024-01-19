@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,27 +18,42 @@ public class SettingsMenu : MonoBehaviour
     {
         resolutions = Screen.resolutions;
 
+        // Clear dropdown options
         resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
 
-        int currentResolutionIndex = 0;
+        int currentResolutionIndex = -1;
 
-        for (int i = resolutions.Length - 1; i >= 0; i--)
+        foreach (Resolution resolution in resolutions)
         {
-            string option = resolutions[i].width + " X " + resolutions[i].height;
-            options.Add(option);
+            if (Is16By9AspectRatio(resolution))
+            {
+                string option = $"{resolution.width} X {resolution.height}";
+
+                // Avoid adding duplicate resolutions
+                if (!resolutionDropdown.options.Contains(new Dropdown.OptionData(option)))
+                {
+                    resolutionDropdown.options.Add(new Dropdown.OptionData(option));
+
+                    // Find the current resolution index
+                    if (Screen.width == resolution.width && Screen.height == resolution.height)
+                    {
+                        currentResolutionIndex = resolutionDropdown.options.Count - 1;
+                    }
+                }
+            }
         }
 
-        resolutionDropdown.AddOptions(options);
-
-        // Log current resolution and selected index
-        Debug.Log($"Current Resolution: {Screen.currentResolution.width} X {Screen.currentResolution.height}");
-        Debug.Log($"Selected Resolution Index: {currentResolutionIndex}");
-
-        resolutionDropdown.value = currentResolutionIndex;
+        // Set the dropdown value to the current resolution index
+        resolutionDropdown.value = currentResolutionIndex != -1 ? currentResolutionIndex : 0;
         resolutionDropdown.RefreshShownValue();
 
         PlayerPrefsSet();
+    }
+
+    // Helper method to check if a resolution has a 16:9 aspect ratio
+    private bool Is16By9AspectRatio(Resolution resolution)
+    {
+        return Mathf.Approximately((float)resolution.width / resolution.height, 16f / 9f);
     }
 
     public void PlayerPrefsSet()
@@ -53,75 +67,52 @@ public class SettingsMenu : MonoBehaviour
         GraphicsInput.value = qualitySet;
 
         int fullscreenSet = PlayerPrefs.GetInt("FullScreen");
-        if (fullscreenSet == 1)
-        {
-            Screen.fullScreen = true;
-            FullScreenInput.isOn = true;
-        }
-        else
-        {
-            Screen.fullScreen = false;
-            FullScreenInput.isOn = false;
-        }
+        bool isFullScreen = fullscreenSet == 1;
 
-        int resolutionSet = PlayerPrefs.GetInt("Resolution");
+        // Ensure the UI toggle reflects the correct state
+        FullScreenInput.isOn = isFullScreen;
 
-        // Ensure the saved resolution index is within bounds
-        resolutionSet = Mathf.Clamp(resolutionSet, 0, resolutions.Length - 1);
-
-        resolutionDropdown.value = resolutionSet;
-
-        // Log selected resolution index
-        Debug.Log($"Selected Resolution Index on PlayerPrefsSet: {resolutionSet}");
-
-        Resolution resolution = resolutions[resolutionSet];
-
-        // Log selected resolution
-        Debug.Log($"Selected Resolution on PlayerPrefsSet: {resolution.width} X {resolution.height}");
-
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        ApplyResolution();
     }
 
-    public void SetResolution()
+    public void ApplyResolution()
     {
         int resolutionIndex = resolutionDropdown.value;
         Resolution resolution = resolutions[resolutionIndex];
 
-        // Log selected resolution
-        Debug.Log($"Selected Resolution on SetResolution: {resolution.width} X {resolution.height}");
+        if (FullScreenInput.isOn)
+        {
+            // Set fullscreen mode with screen scaling mode to match display's native resolution
+            Screen.SetResolution(resolution.width, resolution.height, FullScreenMode.FullScreenWindow);
+        }
+        else
+        {
+            // Set windowed mode
+            Screen.SetResolution(resolution.width, resolution.height, false);
+        }
 
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         PlayerPrefs.SetInt("Resolution", resolutionIndex);
-        PlayerPrefsSet();
     }
 
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
         PlayerPrefs.SetFloat("Volume", volume);
-        PlayerPrefsSet();
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         PlayerPrefs.SetInt("Graphics", qualityIndex);
-        PlayerPrefsSet();
     }
 
-    public void SetFullScreen()
+    public void SetFullScreen(bool isFullScreen)
     {
-        bool isFullScreen = FullScreenInput.GetComponent<Toggle>().isOn;
+        FullScreenInput.isOn = isFullScreen;
 
-        Screen.fullScreen = isFullScreen;
-        if (isFullScreen)
-        {
-            PlayerPrefs.SetInt("FullScreen", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("FullScreen", 0);
-        }
-        PlayerPrefsSet();
+        PlayerPrefs.SetInt("FullScreen", isFullScreen ? 1 : 0);
+
+        // Set the resolution based on the toggle state
+        ApplyResolution();
     }
 }

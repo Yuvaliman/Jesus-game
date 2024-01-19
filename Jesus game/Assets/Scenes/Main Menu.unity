@@ -2742,7 +2742,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1038124771}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetFullScreen
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3720,7 +3720,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3783,11 +3783,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb719e9593e8ef4e893fe972b6e395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 10a85d48f775f1e429a56e36b203d535, type: 2}
   resolutionDropdown: {fileID: 1836347963}
+  FullScreenInput: {fileID: 894721262}
+  mainCamera: {fileID: 1141669503}
+  audioMixer: {fileID: 24100000, guid: 10a85d48f775f1e429a56e36b203d535, type: 2}
   VolumeInput: {fileID: 161426121}
   GraphicsInput: {fileID: 188639094}
-  FullScreenInput: {fileID: 894721262}
 --- !u!1 &1050887137
 GameObject:
   m_ObjectHideFlags: 0
