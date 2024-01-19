@@ -55,5 +55,8 @@ public class SettingsMenu : MonoBehaviour
     public void ResetPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+        VolumeInput.value = 100;
+        GraphicsInput.value = 2;
+        FullScreenInput.isOn = true;
     }
 }
