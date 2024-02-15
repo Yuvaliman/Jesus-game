@@ -3840,7 +3840,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 90321606}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SefFullScreen
+        m_MethodName: SetFullScreen
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

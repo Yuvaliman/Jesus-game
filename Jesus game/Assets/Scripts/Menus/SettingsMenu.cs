@@ -29,7 +29,6 @@ public class SettingsMenu : MonoBehaviour
         int fullscreenSet = PlayerPrefs.GetInt("FullScreen");
         bool isFullScreen = fullscreenSet == 1;
 
-        // Ensure the UI toggle reflects the correct state
         FullScreenInput.isOn = isFullScreen;
     }
 
@@ -48,7 +47,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullScreen(bool isFullScreen)
     {
         FullScreenInput.isOn = isFullScreen;
-
+        Screen.fullScreen = isFullScreen;
         PlayerPrefs.SetInt("FullScreen", isFullScreen ? 1 : 0);
     }
 
