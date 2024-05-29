@@ -3359,7 +3359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &982396347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5087,12 +5087,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a015358f52c8eb042930444b36ef0a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 0
-  _attackRange: 0
-  _enemyLayerMask:
+  swordDamageAmount: 10
+  swordAttackRange: 1.5
+  bowDamageAmount: 15
+  bowAttackRange: 10
+  enemyLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  _attackDelay: 0.5
+  attackDelay: 0.5
 --- !u!114 &1675255388
 MonoBehaviour:
   m_ObjectHideFlags: 0

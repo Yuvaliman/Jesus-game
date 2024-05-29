@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     public Rigidbody2D body;
     public Animator anim;
     public SpriteRenderer spriteRenderer;
+    public CapsuleCollider2D capsuleCollider;
 
     private float horizontal;
     private float vertical;
@@ -120,10 +121,12 @@ public class Movement : MonoBehaviour
         if (mousePos.x > transform.position.x)
         {
             spriteRenderer.flipX = false; // Face right
+            capsuleCollider.offset = new Vector2(Mathf.Abs(capsuleCollider.offset.x), capsuleCollider.offset.y);
         }
         else
         {
             spriteRenderer.flipX = true; // Face left
+            capsuleCollider.offset = new Vector2(-Mathf.Abs(capsuleCollider.offset.x), capsuleCollider.offset.y);
         }
     }
 }
