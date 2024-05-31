@@ -10404,17 +10404,17 @@ Tilemap:
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 6
   m_TileOrientationMatrix:
-    e00: 5.5
+    e00: 0.8
     e01: 0
     e02: 0
     e03: 0
     e10: 0
-    e11: 5.5
+    e11: 0.8
     e12: 0
     e13: 0
     e20: 0
     e21: 0
-    e22: 5.5
+    e22: 0.8
     e23: 0
     e30: 0
     e31: 0
@@ -10913,7 +10913,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 354053303}
   m_Father: {fileID: 0}
