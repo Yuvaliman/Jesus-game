@@ -8,11 +8,6 @@ public class Crossfade : MonoBehaviour
     public float transitionTime = 1f;
     public GameObject image;
 
-    private void Start()
-    {
-        Loader.SetActive(true);
-    }
-
     public void CrossfadeAnimation(int scene)
     {
         StartCoroutine(LoadScene(scene));
