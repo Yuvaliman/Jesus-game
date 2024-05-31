@@ -7,7 +7,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float swordAttackRange = 1.5f;
     [SerializeField] private float bowDamageAmount = 15f;
     [SerializeField] private float bowAttackRange = 10f;
-    [SerializeField] private float attackDelay = 0.5f;
+    [SerializeField] private float swordAttackDelay = 0.5f;
+    [SerializeField] private float bowAttackDelay = 1.5f;
 
     private bool canAttack = true;
     private WeaponSystem weaponSystem;
@@ -33,7 +34,13 @@ public class PlayerAttack : MonoBehaviour
     {
         Attack();
         canAttack = false;
-        yield return new WaitForSeconds(attackDelay);
+        if (weaponSystem.IsSwordActive())
+        {
+            yield return new WaitForSeconds(swordAttackDelay);
+        } else
+        {
+            yield return new WaitForSeconds(bowAttackDelay);
+        }
         canAttack = true;
     }
 
