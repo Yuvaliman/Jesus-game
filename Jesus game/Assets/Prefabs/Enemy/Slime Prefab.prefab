@@ -553,6 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+  _minIdleTime: 1
+  _maxIdleTime: 3
 --- !u!114 &1356472685067395185
 MonoBehaviour:
   m_ObjectHideFlags: 0

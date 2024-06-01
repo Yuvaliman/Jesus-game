@@ -5,12 +5,12 @@ public class OrbFloat : MonoBehaviour
     public Transform playerTransform;
     public SpriteRenderer PlayerSpriteRenderer;
     public Transform orbTransform;
-    public float horizontalMovementSpeed = 5.0f; // Adjust the horizontal speed as needed
-    public float verticalMovementSpeed = 2.0f; // Adjust the vertical speed as needed
-    public float lerpFactor = 0.1f; // Adjust the interpolation factor
-    public Vector3 offset = new Vector3(-0.45f, 0.25f, 0.0f); // Set the desired offset
-    public float closeDistanceThreshold = 1.5f; // Set the threshold for close distance
-    public float amplitude = 0.01f; // Adjust the amplitude for vertical movement
+    public float horizontalMovementSpeed = 5.0f;
+    public float verticalMovementSpeed = 2.0f;
+    public float lerpFactor = 0.1f;
+    public Vector3 offset = new Vector3(-0.45f, 0.25f, 0.0f);
+    public float closeDistanceThreshold = 1.5f;
+    public float amplitude = 0.01f;
 
     void Update()
     {
