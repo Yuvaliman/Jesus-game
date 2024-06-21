@@ -54082,7 +54082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a015358f52c8eb042930444b36ef0a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordDamageAmount: 10
+  swordDamageAmount: 20
   swordAttackRange: 1.5
   bowDamageAmount: 15
   bowAttackRange: 10
