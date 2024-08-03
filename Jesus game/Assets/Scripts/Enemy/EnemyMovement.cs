@@ -4,9 +4,16 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
     private float _speed;
+    [SerializeField]
+    private float _minIdleTime = 1f;
+    [SerializeField]
+    private float _maxIdleTime = 3f;
 
     private Rigidbody2D _rigidbody;
     private PlayerAwarenessController _playerAwarenessController;
+    private Vector2 _randomDirection;
+    private bool _isIdle;
+    private float _idleTimer;
 
     private void Awake()
     {
@@ -16,22 +23,41 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetVelocity();
-    }
-
-    private void SetVelocity()
-    {
-        Vector2 direction;
-
         if (_playerAwarenessController.AwareOfPlayer)
         {
-            direction = _playerAwarenessController.DirectionToPlayer.normalized;
+            MoveTowardsPlayer();
         }
         else
         {
-            direction = transform.up;
+            if (!_isIdle)
+            {
+                _isIdle = true;
+                _idleTimer = Random.Range(_minIdleTime, _maxIdleTime);
+            }
+            else
+            {
+                _idleTimer -= Time.fixedDeltaTime;
+                if (_idleTimer <= 0)
+                {
+                    _isIdle = false;
+                }
+            }
+            if (!_isIdle)
+            {
+                _randomDirection = Random.insideUnitCircle.normalized;
+            }
+            MoveRandomly();
         }
+    }
 
+    private void MoveTowardsPlayer()
+    {
+        Vector2 direction = _playerAwarenessController.DirectionToPlayer.normalized;
         _rigidbody.velocity = direction * _speed;
+    }
+
+    private void MoveRandomly()
+    {
+        _rigidbody.velocity = _randomDirection * _speed;
     }
 }

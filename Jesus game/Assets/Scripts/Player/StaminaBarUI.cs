@@ -38,7 +38,6 @@ public class StaminaBarUI : MonoBehaviour
                 yield return null;
             }
 
-
             // Reset stamina bar for the next iteration
             ResetStaminaBar();
         }
