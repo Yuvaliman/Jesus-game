@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -7,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float swordAttackRange = 1.5f;
     [SerializeField] private float bowDamageAmount = 15f;
     [SerializeField] private float bowAttackRange = 10f;
-    [SerializeField] private float attackDelay = 0.5f;
+    [SerializeField] private float attackDelay = 0.25f;
 
     private bool canAttack = true;
     private WeaponSystem weaponSystem;
@@ -21,23 +22,27 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0) && canAttack)
         {
-            StartCoroutine(AttackWithDelay());
+            StartCoroutine(AttackWithDelay(true)); // True for sword attack
+        }
+        else if (Input.GetMouseButtonDown(1) && canAttack)
+        {
+            StartCoroutine(AttackWithDelay(false)); // False for bow attack
         }
     }
 
-    private IEnumerator AttackWithDelay()
+    private IEnumerator AttackWithDelay(bool isSword)
     {
-        Attack();
+        Attack(isSword);
         canAttack = false;
         yield return new WaitForSeconds(attackDelay);
         canAttack = true;
     }
 
-    private void Attack()
+    private void Attack(bool isSword)
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
@@ -47,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
         float attackRange;
         Color rayColor;
 
-        if (weaponSystem.IsSwordActive())
+        if (isSword)
         {
             damageAmount = swordDamageAmount;
             attackRange = swordAttackRange;

@@ -4,7 +4,6 @@ public class WeaponSystem : MonoBehaviour
 {
     public GameObject Sword;
     public GameObject Bow;
-    private bool isSwordActive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -16,16 +15,15 @@ public class WeaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetMouseButtonDown(0))
         {
-            isSwordActive = !isSwordActive;
-            Sword.SetActive(isSwordActive);
-            Bow.SetActive(!isSwordActive);
+            Sword.SetActive(true);
+            Bow.SetActive(false);
         }
-    }
-
-    public bool IsSwordActive()
-    {
-        return isSwordActive;
+        else if (Input.GetMouseButtonDown(1))
+        {
+            Sword.SetActive(false);
+            Bow.SetActive(true);
+        }
     }
 }
