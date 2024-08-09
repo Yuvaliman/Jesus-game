@@ -14,6 +14,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
 
+    public CursorManager cursorManager;
+
+    void Start()
+    {
+        cursorManager = FindAnyObjectByType<CursorManager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,6 +42,8 @@ public class PauseMenu : MonoBehaviour
         settingsMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+        cursorManager.updateCursor("normal");
     }
 
     public void Pause()
@@ -42,9 +51,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        cursorManager.updateCursor("menu");
     }
     public void MainMenu()
     {
+        cursorManager.updateCursor("normal");
         Time.timeScale = 1f;
         StartCoroutine(LoadScene(0));
     }
