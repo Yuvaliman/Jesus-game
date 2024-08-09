@@ -55,10 +55,11 @@ public class CursorManager : MonoBehaviour
     public void updateCursor(string name)
     {
         int num = 8;
+        int menuNum = 4;
 
         if (name == "menu")
         {
-            Cursor.SetCursor(menuCursor, new Vector2(num, num), CursorMode.Auto);
+            Cursor.SetCursor(menuCursor, new Vector2(menuNum, menuNum), CursorMode.Auto);
         }
         else if (name == "normal")
         {

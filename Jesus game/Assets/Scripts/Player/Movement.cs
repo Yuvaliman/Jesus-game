@@ -7,12 +7,12 @@ public class Movement : MonoBehaviour
     public Rigidbody2D body;
     public Animator anim;
     public SpriteRenderer spriteRenderer;
-    public CapsuleCollider2D capsuleCollider;
+    public BoxCollider2D boxCollider;
 
     private float horizontal;
     private float vertical;
 
-    public float MoveSpeed = 5f;
+    public float MoveSpeed = 20f;
 
     // Dash variables
     public float dashCooldown = 1f;
@@ -53,35 +53,35 @@ public class Movement : MonoBehaviour
 
     IEnumerator DashCoroutine()
     {
-            if (Time.time >= nextDashTime && staminaBarForegroundImage.fillAmount > 0.25f)
+        if (Time.time >= nextDashTime && staminaBarForegroundImage.fillAmount > 0.25f)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            // Calculate the destination point based on a fixed distance from the player
+            Vector2 dashDestination = (mousePos - transform.position).normalized * dashDistance;
+
+            // Save the initial position for reference
+            Vector2 initialPosition = transform.position;
+
+            nextDashTime = Time.time + dashCooldown;
+
+            // Dash duration based on distance (adjust as necessary)
+            float dashDuration = 0.2f;
+            float startTime = Time.time;
+
+            while (Time.time < startTime + dashDuration)
             {
-                Vector3 mousePos = Input.mousePosition;
-                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-                // Calculate the destination point based on a fixed distance from the player
-                Vector2 dashDestination = (mousePos - transform.position).normalized * dashDistance;
-
-                // Save the initial position for reference
-                Vector2 initialPosition = transform.position;
-
-                nextDashTime = Time.time + dashCooldown;
-
-                // Dash duration based on distance (adjust as necessary)
-                float dashDuration = 0.2f;
-                float startTime = Time.time;
-
-                while (Time.time < startTime + dashDuration)
-                {
-                    // Move the player towards the dash destination
-                    float journeyFraction = (Time.time - startTime) / dashDuration;
-                    transform.position = Vector2.Lerp(initialPosition, initialPosition + dashDestination, journeyFraction);
-                    yield return null;
-                }
-
-                transform.position = initialPosition + dashDestination; // Ensure the player reaches the destination exactly
-
-                staminaBarForegroundImage.fillAmount -= staminaDashDecreaseRate;
+                // Move the player towards the dash destination
+                float journeyFraction = (Time.time - startTime) / dashDuration;
+                transform.position = Vector2.Lerp(initialPosition, initialPosition + dashDestination, journeyFraction);
+                yield return null;
             }
+
+            transform.position = initialPosition + dashDestination; // Ensure the player reaches the destination exactly
+
+            staminaBarForegroundImage.fillAmount -= staminaDashDecreaseRate;
+        }
     }
 
     void UpdateAnimation()
@@ -96,14 +96,14 @@ public class Movement : MonoBehaviour
             if (isRunning && staminaBarForegroundImage.fillAmount > 0.01f)
             {
                 anim.SetBool("IsRunning", true);
-                MoveSpeed = 7f;
+                MoveSpeed = 20f;
 
                 staminaBarForegroundImage.fillAmount -= staminaRunningDecreaseRate * Time.deltaTime;
             }
             else
             {
                 anim.SetBool("IsRunning", false);
-                MoveSpeed = 5f;
+                MoveSpeed = 15f;
             }
         }
         else
@@ -121,12 +121,13 @@ public class Movement : MonoBehaviour
         if (mousePos.x > transform.position.x)
         {
             spriteRenderer.flipX = false; // Face right
-            capsuleCollider.offset = new Vector2(Mathf.Abs(capsuleCollider.offset.x), capsuleCollider.offset.y);
+            boxCollider.offset = new Vector2(Mathf.Abs(boxCollider.offset.x), boxCollider.offset.y);
+            boxCollider.offset = new Vector2(Mathf.Abs(boxCollider.offset.x), boxCollider.offset.y);
         }
         else
         {
             spriteRenderer.flipX = true; // Face left
-            capsuleCollider.offset = new Vector2(-Mathf.Abs(capsuleCollider.offset.x), capsuleCollider.offset.y);
+            boxCollider.offset = new Vector2(-Mathf.Abs(boxCollider.offset.x), boxCollider.offset.y);
         }
     }
 }

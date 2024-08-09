@@ -35,8 +35,10 @@ public class FollowPlayer : MonoBehaviour
 
     void UpdateOffset()
     {
+        bool isPlayerFlipped = player.GetComponent<SpriteRenderer>().flipX;
         // Determine the current offset based on player's facing direction
-        currentOffset = playerTransform.localScale.x * Offset;
+
+        currentOffset = isPlayerFlipped ? new Vector3(Offset.x * -1, Offset.y, Offset.z) : Offset;
     }
 
     void FollowPlayerWithOffset()
