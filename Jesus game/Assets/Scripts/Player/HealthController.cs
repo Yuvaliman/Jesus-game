@@ -19,6 +19,8 @@ public class HealthController : MonoBehaviour
     bool isDeadAnimationStarted = false;
     float deathDelay = 1.0f;
 
+    [SerializeField] private HealthBarUI HealthBar;
+
     public float RemainingHealthPercentage
     {
         get
@@ -43,6 +45,8 @@ public class HealthController : MonoBehaviour
         }
 
         _currentHealth -= damageAmount;
+
+        HealthBar.ShowHealthChange(damageAmount, false);
 
         OnHealthChanged.Invoke();
 
@@ -71,6 +75,8 @@ public class HealthController : MonoBehaviour
         }
 
         _currentHealth += amountToAdd;
+
+        HealthBar.ShowHealthChange(amountToAdd, true);
 
         OnHealthChanged.Invoke();
 
