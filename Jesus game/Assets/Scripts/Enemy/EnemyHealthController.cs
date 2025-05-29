@@ -60,6 +60,7 @@ public class EnemyHealthController : MonoBehaviour
 
         EnemyHealthBar.ShowHealthChange(amountToAdd, true);
 
+
         OnHealthChanged.Invoke();
 
         if (_currentHealth > _maximumHealth)
