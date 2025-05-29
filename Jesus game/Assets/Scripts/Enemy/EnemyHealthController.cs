@@ -8,6 +8,7 @@ public class EnemyHealthController : MonoBehaviour
 
     [SerializeField] private float _currentHealth;
     [SerializeField] private float _maximumHealth;
+    [SerializeField] private EnemyHealthBar EnemyHealthBar;
 
     private bool isDeadAnimationStarted = false;
 
@@ -30,6 +31,8 @@ public class EnemyHealthController : MonoBehaviour
         }
 
         _currentHealth -= damageAmount;
+
+        EnemyHealthBar.ShowHealthChange(damageAmount, false);
 
         OnHealthChanged.Invoke();
 
@@ -54,6 +57,8 @@ public class EnemyHealthController : MonoBehaviour
         }
 
         _currentHealth += amountToAdd;
+
+        EnemyHealthBar.ShowHealthChange(amountToAdd, true);
 
         OnHealthChanged.Invoke();
 
