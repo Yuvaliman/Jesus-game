@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Unbound Studios
   productName: Nexium
-  defaultCursor: {fileID: 2800000, guid: b5826ad199c06ca49a6f16fa8309057c, type: 3}
-  cursorHotspot: {x: 0, y: 0}
+  defaultCursor: {fileID: 2800000, guid: b3676ddccf794ff47b17bc83f2a8672a, type: 3}
+  cursorHotspot: {x: 4, y: 4}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1

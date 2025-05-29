@@ -53850,7 +53850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500408519642507839, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8934673843879990424, guid: 56a9492ab1c4ab24ab8bc77e668b4267, type: 3}
       propertyPath: m_Pivot.x
@@ -60263,9 +60263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc7914b258d49a4dbd2533913c7c0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuCursor: {fileID: 2800000, guid: b5826ad199c06ca49a6f16fa8309057c, type: 3}
-  normalCursor: {fileID: 2800000, guid: 150d6aac536e2b142bd9c5a4cd3066dc, type: 3}
-  targetCursor: {fileID: 2800000, guid: 96f29a75bb27fba4d89bfc220098625b, type: 3}
+  menuCursor: {fileID: 2800000, guid: b3676ddccf794ff47b17bc83f2a8672a, type: 3}
+  normalCursor: {fileID: 2800000, guid: f045a8cab6c8b694fa7c050926d5f1e3, type: 3}
+  targetCursor: {fileID: 2800000, guid: 4f626be44760fba42b46c82e358b0d01, type: 3}
   cam: {fileID: 519420031}
 --- !u!4 &1926369082
 Transform:

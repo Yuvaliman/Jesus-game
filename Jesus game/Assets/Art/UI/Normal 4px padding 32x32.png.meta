@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 150d6aac536e2b142bd9c5a4cd3066dc
+guid: dd0d76b1bae853a4b8e26f174f85f744
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6520267170521005913
-    second: normal_cursor_0
+      213: 6888365789936710106
+    second: Normal 4px padding 32x32_0
   - first:
-      213: 2848732375693713717
-    second: normal_cursor_1
+      213: -8475362060007314139
+    second: Normal 4px padding 32x32_1
   - first:
-      213: -6215509433127781566
-    second: normal_cursor_2
+      213: -8893596106583481161
+    second: Normal 4px padding 32x32_2
   - first:
-      213: -3131843979956794514
-    second: normal_cursor_3
+      213: 3198785034084006830
+    second: Normal 4px padding 32x32_3
   - first:
-      213: -5267933768373869003
-    second: normal_cursor_4
+      213: 1996037618544110211
+    second: Normal 4px padding 32x32_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,18 +58,18 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 7
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -86,8 +86,8 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: normal_cursor_0
+      name: Normal 4px padding 32x32_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5
-        width: 6
-        height: 6
+        x: 2
+        y: 12
+        width: 10
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,20 +126,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 95fbb8b1274ac7a50800000000000000
-      internalID: 6520267170521005913
+      spriteID: ad171289034689f50800000000000000
+      internalID: 6888365789936710106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_cursor_1
+      name: Normal 4px padding 32x32_1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 10
-        width: 6
-        height: 6
+        x: 11
+        y: 11
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 531e061a00bb88720800000000000000
-      internalID: 2848732375693713717
+      spriteID: 52de07e5c17716a80800000000000000
+      internalID: -8475362060007314139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_cursor_2
+      name: Normal 4px padding 32x32_2
       rect:
         serializedVersion: 2
-        x: 5
-        y: 5
-        width: 6
-        height: 6
+        x: 12
+        y: 20
+        width: 8
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24b345c0a131eb9a0800000000000000
-      internalID: -6215509433127781566
+      spriteID: 7b46b4b1679939480800000000000000
+      internalID: -8893596106583481161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_cursor_3
+      name: Normal 4px padding 32x32_3
       rect:
         serializedVersion: 2
-        x: 10
-        y: 5
-        width: 6
-        height: 6
+        x: 20
+        y: 12
+        width: 10
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6bcab25e747984d0800000000000000
-      internalID: -3131843979956794514
+      spriteID: eabb9656a0e546c20800000000000000
+      internalID: 3198785034084006830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_cursor_4
+      name: Normal 4px padding 32x32_4
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 6
-        height: 6
+        x: 12
+        y: 2
+        width: 8
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,8 +210,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5366acbf52a84e6b0800000000000000
-      internalID: -5267933768373869003
+      spriteID: 38a63ab73a953bb10800000000000000
+      internalID: 1996037618544110211
       vertices: []
       indices: 
       edges: []
@@ -219,19 +219,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      normal_cursor_0: 6520267170521005913
-      normal_cursor_1: 2848732375693713717
-      normal_cursor_2: -6215509433127781566
-      normal_cursor_3: -3131843979956794514
-      normal_cursor_4: -5267933768373869003
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -54,7 +54,7 @@ public class CursorManager : MonoBehaviour
 
     public void updateCursor(string name)
     {
-        int num = 8;
+        int num = 16;
         int menuNum = 4;
 
         if (name == "menu")
