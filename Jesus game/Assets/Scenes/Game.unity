@@ -54126,6 +54126,7 @@ MonoBehaviour:
   dashCooldown: 1
   dashDistance: 30
   staminaBarForegroundImage: {fileID: 979173748}
+  feetParticleFX: {fileID: 1792592162}
 --- !u!114 &1675255384
 MonoBehaviour:
   m_ObjectHideFlags: 0

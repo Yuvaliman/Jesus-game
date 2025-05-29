@@ -23,6 +23,9 @@ public class Movement : MonoBehaviour
     private float staminaRunningDecreaseRate = .15f;
     private float staminaDashDecreaseRate = 0.25f;
 
+    [SerializeField]
+    private Transform feetParticleFX;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -123,11 +126,13 @@ public class Movement : MonoBehaviour
             spriteRenderer.flipX = false; // Face right
             boxCollider.offset = new Vector2(Mathf.Abs(boxCollider.offset.x), boxCollider.offset.y);
             boxCollider.offset = new Vector2(Mathf.Abs(boxCollider.offset.x), boxCollider.offset.y);
+            feetParticleFX.rotation = Quaternion.Euler(0, 0, 0); // Reset rotation for right-facing
         }
         else
         {
             spriteRenderer.flipX = true; // Face left
             boxCollider.offset = new Vector2(-Mathf.Abs(boxCollider.offset.x), boxCollider.offset.y);
+            feetParticleFX.rotation = Quaternion.Euler(0, 180, 0); // Rotate for left-facing
         }
     }
 }
